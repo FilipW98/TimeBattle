@@ -6,7 +6,6 @@ export default function TimerChallenge({ title, targetTime }) {
 
 	const timer = useRef();
 	const popup = useRef();
-
 	const timerIsActive = isRunning > 0 && isRunning < targetTime * 1000;
 
     if (isRunning <= 0) {
@@ -19,7 +18,6 @@ export default function TimerChallenge({ title, targetTime }) {
     }
 
 	function handleGame() {
-		console.log('odpalam handleGame');
 		timer.current = setInterval(() => {
             setIsRunning(prevIsRunning =>
                 prevIsRunning - 10);
@@ -29,7 +27,6 @@ export default function TimerChallenge({ title, targetTime }) {
 	function handleStop() {
 		popup.current.showModal();
 		clearInterval(timer.current);
-        console.log('zatrzymano gre!');
 	}
 
 	return (
@@ -38,11 +35,11 @@ export default function TimerChallenge({ title, targetTime }) {
 			<section className='challenge'>
 				<h2>{title}</h2>
 				<p className='challenge-time'>
-					{targetTime} second{targetTime > 1 ? 's' : ''}
+					{targetTime} sekund{targetTime > 1 ? '' : 'a'}
 				</p>
-				<button onClick={timerIsActive ? handleStop : handleGame}>{timerIsActive ? 'Stop' : 'Start'} game</button>
+				<button onClick={timerIsActive ? handleStop : handleGame}>{timerIsActive ? 'Zatrzymaj' : 'Zacznij'} grę</button>
 
-				<p className={timerIsActive ? 'active' : ''}>{timerIsActive ? 'Timer is running...' : 'Timer inactive'}</p>
+				<p className={timerIsActive ? 'active' : ''}>{timerIsActive ? 'Stoper włączony...' : 'Stoper wyłączony'}</p>
 			</section>
 		</>
 	);

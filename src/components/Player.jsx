@@ -1,6 +1,5 @@
 import { useState, useRef } from "react";
 
-
 export default function Player() {
 
   const nameRef = useRef();
@@ -11,13 +10,12 @@ export default function Player() {
     nameRef.current.value = '';
   }
 
-
   return (
 		<section id='player'>
-			<h2>Welcome {changeName ?? 'unknown player'}</h2>
+			<h2>{changeName ?  `Witaj ${changeName}` : 'Podaj nazwę gracza'}</h2>
 			<p>
 				<input ref={nameRef} type='text' />
-				<button onClick={nameHandler}>Set Name</button>
+				<button onClick={nameHandler}>Ustaw Nazwę</button>
 			</p>
 		</section>
 	);

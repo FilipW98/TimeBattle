@@ -1,6 +1,5 @@
 import {createPortal} from 'react-dom';
 
-
 export default function ResultModal({ ref, remainingTime, targetTime, onReset }) {
 	const youLost = remainingTime <= 0;
 	const formatterRemainTime = remainingTime / 1000;
@@ -8,17 +7,17 @@ export default function ResultModal({ ref, remainingTime, targetTime, onReset })
 
 	return (createPortal(
 		<dialog ref={ref} className='result-modal' onClose={onReset}>
-			{youLost && <h2>You Lost</h2>}
-			{!youLost && <h2>Your score {score}</h2>}
+			{youLost && <h2>Porażka</h2>}
+			{!youLost && <h2>Twój wynik {score}</h2>}
 			<p>
 				{' '}
-				The target time was{' '}
+				Czas docelowy wynosił{' '}
 				<strong>
-					{targetTime} second{targetTime > 1 ? 's' : ''}
+					{targetTime} sekund{targetTime > 1 ? '' : 'ę'}
 				</strong>
 			</p>
 			<p>
-				You stopped the timer with <strong>{formatterRemainTime} seconds left.</strong>
+				Pozostało <strong>{formatterRemainTime} sekund do końca.</strong>
 			</p>
 			<form method='dialog' onSubmit={onReset}>
 				<button>Close</button>
